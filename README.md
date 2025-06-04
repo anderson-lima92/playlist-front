@@ -1,27 +1,40 @@
-# PlaylistFront
+# Documentação da Interface
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+A interface tem como objetivo permitir o gerenciamento de playlists musicais. As funcionalidades disponíveis incluem:
 
-## Development server
+- **Criar uma playlist**: Permite o registro de uma nova playlist com uma ou mais músicas.
+- **Buscar todas as playlists**: Lista todas as playlists registradas.
+- **Buscar uma playlist por nome**: Permite consultar uma playlist específica pelo seu nome.
+- **Deletar uma playlist**: Remove uma playlist existente com base em seu nome.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas
 
-## Code scaffolding
+- Angular 12.0.1
+- Angular Material 12.0.5
+- TypeScript 4.2.3
+- RxJS ~6.6.0
+- HTML e SCSS
+- HTTPClient com autenticação JWT
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Configuração do Projeto
 
-## Build
+Esta interface consome uma API protegida por autenticação JWT. Para funcionar corretamente, é necessário que o token JWT esteja salvo no `sessionStorage` com a chave `authToken`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Além disso, a interface busca os gêneros musicais através de uma chamada para o endpoint `/generos`. Caso não obtenha resposta, será utilizada uma lista de gêneros padrão.
 
-## Running unit tests
+## Executando a Aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para executar a aplicação, utilize os comandos abaixo:
 
-## Running end-to-end tests
+```bash
+# Instalar as dependências
+npm install --force
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Iniciar o servidor local
+npm run start
 
-## Further help
+O projeto será servido em:
+http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+após esses passos siga as instruções da aplicação backend
+https://github.com/anderson-lima92/playlist/blob/main/README.md
