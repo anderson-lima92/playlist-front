@@ -24,17 +24,29 @@ Além disso, a interface busca os gêneros musicais através de uma chamada para
 
 ## Executando a Aplicação
 
-Para executar a aplicação, utilize os comandos abaixo:
+1. Clone este repositório:
+   ```bash
+   https://github.com/anderson-lima92/playlist-front.git
+   cd playlist-api
 
-```bash
-# Instalar as dependências
-npm install --force
 
-# Iniciar o servidor local
-npm run start
+2. Instale as dependências do projeto:
+   ```bash
+    npm install
+    ```
 
-O projeto será servido em:
+3. Inicie o servidor de desenvolvimento:
+4. ```bash
+    npm run start
+    ```
+
+3. Após a inicialização, acesse a aplicação no navegador:
+
+
 http://localhost:4200
 
-após esses passos siga as instruções da aplicação backend
+
+## Interface Web
+Para utilizar a interface frontend da aplicação, siga as instruções disponíveis no repositório do projeto backend:
+
 https://github.com/anderson-lima92/playlist/blob/main/README.md
