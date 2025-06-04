@@ -1,0 +1,101 @@
+<div class="playlists-container">
+  <h1 style="text-align: center; margin-bottom: 24px;">Gerenciamento de Playlists</h1>
+
+  <mat-tab-group>
+    <!-- Registrar -->
+    <mat-tab label="Registrar">
+      <form [formGroup]="playlistForm" (ngSubmit)="registrarPlaylist()">
+        <mat-form-field class="full-width">
+          <mat-label>Nome da Playlist</mat-label>
+          <input matInput formControlName="nome" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="descricao"></textarea>
+        </mat-form-field>
+
+        <div formArrayName="musicas">
+          <div *ngFor="let musica of musicas.controls; let i = index" [formGroupName]="i">
+            <mat-form-field class="full-width">
+              <mat-label>Título</mat-label>
+              <input matInput formControlName="titulo" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Artista</mat-label>
+              <input matInput formControlName="artista" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Álbum</mat-label>
+              <input matInput formControlName="album" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Ano</mat-label>
+              <input matInput formControlName="ano" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Gênero</mat-label>
+              <mat-select formControlName="genero">
+                <mat-option *ngFor="let genero of generos" [value]="genero">
+                  {{ genero }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <hr />
+          </div>
+        </div>
+
+        <button mat-button color="primary" type="button" (click)="addMusica()">Adicionar Música</button>
+        <button mat-flat-button color="accent" type="submit" [disabled]="playlistForm.invalid">Salvar</button>
+      </form>
+    </mat-tab>
+
+    <!-- Buscar todas -->
+    <mat-tab label="Buscar Todas">
+      <button mat-raised-button color="primary" (click)="buscarPlaylists()">Buscar Playlists</button>
+
+      <div *ngFor="let playlist of playlists" class="playlist-card">
+        <h3>{{ playlist.nome }}</h3>
+        <p>{{ playlist.descricao }}</p>
+        <ul>
+          <li *ngFor="let musica of playlist.musicas">
+            {{ musica.titulo }} - {{ musica.artista }} ({{ musica.ano }})
+          </li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- Buscar por Nome -->
+    <mat-tab label="Buscar por Nome">
+      <mat-form-field class="full-width">
+        <mat-label>Nome da Playlist</mat-label>
+        <input matInput [(ngModel)]="nomeBusca" name="nomeBusca" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="buscarPorNome()">Buscar</button>
+
+      <div *ngIf="playlistEncontrada">
+        <h3>{{ playlistEncontrada.nome }}</h3>
+        <p>{{ playlistEncontrada.descricao }}</p>
+        <ul>
+          <li *ngFor="let musica of playlistEncontrada.musicas">
+            {{ musica.titulo }} - {{ musica.artista }} ({{ musica.ano }})
+          </li>
+        </ul>
+      </div>
+    </mat-tab>
+
+    <!-- Deletar -->
+    <mat-tab label="Deletar Playlist">
+      <mat-form-field class="full-width">
+        <mat-label>Nome da Playlist</mat-label>
+        <input matInput [(ngModel)]="nomeDeletar" name="nomeDeletar" />
+      </mat-form-field>
+      <button mat-raised-button color="warn" (click)="deletarPlaylist()">Deletar</button>
+    </mat-tab>
+  </mat-tab-group>
+</div>
